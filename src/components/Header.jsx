@@ -26,7 +26,7 @@ export const Header = ({ children }) => {
           <div className="flex justify-center w-[667px] gap-[40px] text-[16px]">
             {routes.map((el, id) => (
               <Link
-                href={`/${el}`}
+                href={`/${el === "Home" ? "/" : el}`}
                 className=" flex flex-col justify-end"
                 key={id}
               >
@@ -36,6 +36,7 @@ export const Header = ({ children }) => {
           </div>
           <div className="flex items-center justify-around w-[156px] h-[36px] bg-gray-200 rounded-lg">
             <input
+              placeholder="search"
               type="text"
               className="w-[114px] h-[20px] bg-gray-200 outline-none"
             />
@@ -64,6 +65,7 @@ export const Header = ({ children }) => {
               </div>
               <div className="flex items-center mt-[20px] justify-around w-[186px] h-[36px] bg-gray-200 rounded-lg">
                 <input
+                  placeholder="search"
                   type="text"
                   className="w-[140px] h-[20px] bg-gray-200 outline-none ml-[10px]"
                 />

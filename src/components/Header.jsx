@@ -3,6 +3,7 @@ import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoSearchOutline } from "react-icons/io5";
+import Link from "next/link";
 export const Header = ({ children }) => {
   const [open, setOpen] = useState(false);
 
@@ -11,7 +12,7 @@ export const Header = ({ children }) => {
     console.log(open);
   };
 
-  const routes = ["Home", "Blog", " Con"];
+  const routes = ["Home", "Blog", "Contact"];
   return (
     <div className="flex flex-col  items-center mx-auto   ">
       <div className="flex py-[38px]  ">
@@ -24,9 +25,13 @@ export const Header = ({ children }) => {
         <div className="  items-center   hidden md:flex ">
           <div className="flex justify-center w-[667px] gap-[40px] text-[16px]">
             {routes.map((el, id) => (
-              <div className=" flex flex-col justify-end" key={id}>
+              <Link
+                href={`/${el}`}
+                className=" flex flex-col justify-end"
+                key={id}
+              >
                 {el}
-              </div>
+              </Link>
             ))}
           </div>
           <div className="flex items-center justify-around w-[156px] h-[36px] bg-gray-200 rounded-lg">

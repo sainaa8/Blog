@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.workSans {
+  font-family: var(--font-work-sans);
+  
+}
+.serif4 {
+  font-family: var(--font-serif);
+}

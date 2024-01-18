@@ -26,7 +26,7 @@ export const AllBlog = () => {
   const { data, error } = useSWR("https://dev.to/api/articles", (args) =>
     fetch(args).then((res) => res.json())
   );
-  const router = useRouter()
+  const router = useRouter();
   console.log(data);
   const titles = ["Design", "Travel", "fashion", "technology", "Branding"];
   const [moreButtonClicked, setMoreButtonClicked] = useState(false);
@@ -42,7 +42,15 @@ export const AllBlog = () => {
     }
   };
 
+  const { push } = useRouter();
+  const getAllBlogs = () => {
+    push("/blog");
+  };
   console.log(num);
+  const [color, setColor] = useState(true);
+  const changedColor = () => {
+    setColor(!color);
+  };
   return (
     <div>
       <div className="ml-[20px] flex flex-col gap-[24px]">
@@ -55,19 +63,33 @@ export const AllBlog = () => {
               <div className="hover:text-orange-300">All</div>
               <div className="hidden md:flex gap-[16px] ">
                 {titles.map((el, id) => (
-                  <div className="hover:text-orange-300" key={id}>
-                    {el}
+                  <div key={id}>
+                    <div
+                      onClick={() => changedColor()}
+                      className={`${color ? "text-black" : "text-orange-300"}`}
+                    >
+                      {el}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="hidden md:flex hover:text-orange-300">View All</div>
+            <div
+              onClick={() => getAllBlogs()}
+              className={`hidden md:flex hover:text-black active:scale-110`}
+            >
+              View All
+            </div>
           </div>
         </div>
       </div>
       <div className="flex w-fit md:w-[1280px] gap-[10px]  flex-wrap">
         {data?.slice(5, num).map((el, index) => (
-          <div onClick={()=>router.push(`/blog/${el.id}`)} className="ml-[30px]" key={index}>
+          <div
+            onClick={() => router.push(`/blog/${el.id}`)}
+            className="ml-[30px]"
+            key={index}
+          >
             <Blogs
               imgsrc={el.social_image}
               type={el.tag_list[0]}

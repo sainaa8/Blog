@@ -12,8 +12,16 @@ import { RiInstagramFill } from "react-icons/ri";
 import { IoLogoLinkedin } from "react-icons/io";
 
 export const Header = ({ children }) => {
-  const { push } = useRouter;
-  const handlePush = () => {};
+  const { push } = useRouter();
+  const handlePush = () => {
+    push("/");
+  };
+  const handlePushBlog = () => {
+    push("/blog");
+  };
+  const handlePushCon = () => {
+    push("/contact");
+  };
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -34,15 +42,9 @@ export const Header = ({ children }) => {
         <div className="  items-center   hidden md:flex ">
           <div className="workSans">
             <div className="flex font-light justify-center w-[667px] gap-[40px] text-[16px]">
-              {routes.map((el, id) => (
-                <Link
-                  href={`${el === "home" ? "/" : el}`}
-                  className="capitalize flex flex-col justify-end"
-                  key={id}
-                >
-                  {el}
-                </Link>
-              ))}
+              <h1 onClick={() => handlePush()}> Home</h1>
+              <h1 onClick={() => handlePushBlog()}>Blog</h1>
+              <h1 onClick={() => handlePushCon()}>Contact</h1>
             </div>
           </div>
 
@@ -69,15 +71,9 @@ export const Header = ({ children }) => {
               exit={{ scale: 0, transition: { duration: 1 } }}
             >
               <div className="flex flex-col justify-center  gap-[20px] font-bold text-[16px] ">
-                {routes.map((el, id) => (
-                  <Link
-                    href={`${el === "home" ? "/" : el}`}
-                    className=" flex flex-col justify-end"
-                    key={id}
-                  >
-                    {el}
-                  </Link>
-                ))}
+                <h1 onClick={() => handlePush()}> Home</h1>
+                <h1 onClick={() => handlePushBlog()}>Blog</h1>
+                <h1 onClick={() => handlePushCon()}>Contact</h1>
               </div>
               <div className="flex items-center mt-[20px] justify-around w-[186px] h-[36px] bg-gray-200 rounded-lg">
                 <input
@@ -111,15 +107,35 @@ export const Header = ({ children }) => {
           </div>
           <div className="  flex flex-col md:flex-row gap-[30px] md:gap-[0px]">
             <div className="w-[100%] md:w-[601px]   flex flex-col items-center">
-              <h1>Home</h1>
-              <h1>Blog</h1>
-              <h1>Contact</h1>
+              <h1 onClick={() => handlePush()}>Home</h1>
+              <h1 onClick={() => handlePushBlog()}>Blog</h1>
+              <h1 onClick={() => handlePushCon()}>Contact</h1>
             </div>
             <div className="flex gap-[20px]">
-              <FaFacebook />
-              <FaTwitter />
-              <RiInstagramFill />
-              <IoLogoLinkedin />
+              <a
+                href="https://www.facebook.com/"
+                rel="no-referrer"
+                target="_blank"
+              >
+                <FaFacebook />
+              </a>
+              <a href="https://twitter.com/" rel="no-referrer" target="_blank">
+                <FaTwitter />
+              </a>
+              <a
+                href="https://www.instagram.com/"
+                rel="no-referrer"
+                target="_blank"
+              >
+                <RiInstagramFill />
+              </a>
+              <a
+                href="https://www.linkedin.com/"
+                rel="no-referrer"
+                target="_blank"
+              >
+                <IoLogoLinkedin />
+              </a>
             </div>
           </div>
         </div>

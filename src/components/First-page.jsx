@@ -40,7 +40,7 @@ export const FirstPage = () => {
                   <Image
                     src={`${data[counter].social_image}`}
                     layout="fill"
-                    className="rounded-lg"
+                    className="rounded-lg "
                   />
                   <div className="absolute z-[10] bottom-[10px] left-[10px] w-[598px] h-[252px] flex flex-col items-center justify-center rounded-lg  bg-white">
                     <div className="w-[518px] h-[124px] flex flex-col gap-[16px]">
@@ -68,7 +68,7 @@ export const FirstPage = () => {
                 onClick={() => {
                   prev();
                 }}
-                className="relative w-[40px] h-[40px] border border-black rounded "
+                className="relative w-[40px] h-[40px] border border-black rounded active:scale-75"
               >
                 <Image src="/<.svg" layout="fill" />
               </button>
@@ -77,7 +77,7 @@ export const FirstPage = () => {
                 onClick={() => {
                   next();
                 }}
-                className="relative w-[40px] h-[40px] border border-black rounded"
+                className="relative w-[40px] h-[40px] border border-black rounded active:scale-75"
               >
                 <Image src="/>.svg" layout="fill" />
               </button>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoSearchOutline } from "react-icons/io5";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -11,6 +12,8 @@ import { RiInstagramFill } from "react-icons/ri";
 import { IoLogoLinkedin } from "react-icons/io";
 
 export const Header = ({ children }) => {
+  const { push } = useRouter;
+  const handlePush = () => {};
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {

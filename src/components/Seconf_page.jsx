@@ -1,4 +1,5 @@
 import Image from "next/legacy/image";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useState } from "react";
 import useSWR from "swr";
@@ -34,13 +35,13 @@ export const SecondPage = () => {
   const { data, error } = useSWR("https://dev.to/api/articles", (args) =>
     fetch(args).then((res) => res.json())
   );
-
+  const router = useRouter();
   return (
     <div className="flex ml-[20px] flex-col gap-[16px]">
       <div className=" text-[24px] font-bold">Trending</div>
       <div className="flex overflow-x-auto w-[430px] md:w-fit  gap-[20px]">
         {data?.slice(0, 4).map((el, id) => (
-          <div key={id}>
+          <div onClick={() => router.push(`/blog/${el.id}`)} key={id}>
             <TRend
               imgrsc={el.social_image}
               tagList={el.tag_list[0]}

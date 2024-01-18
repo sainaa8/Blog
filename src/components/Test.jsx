@@ -1,53 +1,58 @@
-import Image from "next/image";
-import { CiSquareChevRight, CiSquareChevLeft } from "react-icons/ci";
-import { slideData } from "./IntroSlider";
+import React from "react";
 import { useState } from "react";
- 
-export const IntroPic = (props) => {
-  const [current, setCurrent] = useState(0);
- 
-  const nextSlide = () => {
-    setCurrent(current + 1);
-  };
-  const previousSlide = () => {
-    setCurrent(current - 1);
-  };
- 
+import Image from "next/legacy/image";
+
+function DetailPage({ data }) {
+  const [loader, setLoader] = useState(true);
+  console.log(data);
   return (
-    <>
-      <div
-        className="flex h-[600px] w-304 duration-700"
-        style={{ marginLeft: current === 0 ? "0px" : `-${current * 1216}px` }}
-      >
-        <div className="absolute left-0 w-[130px] z-20 h-[600px] bg-white" />
-        <div className="flex h-full w-full">
-          {slideData.map(({ img, text, title }, index) => (
-            <div
-              key={index}
-              className="hidden md:flex flex-col w-full relative shrink-0 h-full"
-            >
-              <Image src={img} layout="fill" objectFit="contain" alt="" />
-              <div className="rounded-md bg-white w-[598px] h-[252px] p-10 flex flex-col gap-4 absolute bottom-2 left-2">
-                <p className="text-[#fff] text-sm bg-[#4B6BFB] w-[97px] h-7 py-1 rounded-md flex justify-center">
-                  {title}
-                </p>
-                <p className="text-4xl">{text}</p>
-                <p className="text-[#97989F] text-base">January 15, 2024</p>
-              </div>
-            </div>
-          ))}
+    <div className="flex flex-col gap-[32px] justify-center items-center align-center px-[5%] md:px-[20%] sansText">
+      <div className="flex flex-col gap-5">
+        <h1 className="text-[36px] font-[700]">{data.title}</h1>
+        <div className="flex gap-9">
+          <div className="flex gap-4 rounded-full ">
+            <Image
+              src={data.user.profile_image_90 ?? ""}
+              width={28}
+              height={28}
+              alt=""
+              className="rounded-full"
+            />
+            <p>{data.user.name}</p>
+          </div>
+          <p className="text-[16px] font-[400] text-[#97989F]">
+            {data.readable_publish_date}
+          </p>
         </div>
-        <div className="absolute right-0 w-[130px] z-20 h-[600px] bg-white" />
       </div>
-      <div className="flex ml-auto">
-        <button disabled={current === 0} onClick={previousSlide}>
-          <CiSquareChevLeft className="w-10 h-10" color="#696A75" />
-        </button>
-        <button disabled={current === slideData.length - 1} onClick={nextSlide}>
-          <CiSquareChevRight className="w-10 h-10 " color="#696A75" />
-        </button>
+      <Image
+        src={data.cover_image ?? ""}
+        width={1000}
+        height={500}
+        alt=""
+        className="rounded-[12px]"
+      />
+      <p className="text-[20px] font-[400] text-[#3B3C4A] seriText"></p>
+      <div className="align-center">
+        {data.body_html && (
+          <div dangerouslySetInnerHTML={{ __html: data.body_html }} />
+        )}
       </div>
-    </>
+    </div>
   );
+}
+
+export default DetailPage;
+
+export const getServerSideProps = async (context) => {
+  const id = context.params.id;
+
+  const res = await fetch(`https://dev.to/api/articles/${id}`);
+  const data = await res.json();
+
+  return {
+    props: {
+      data: data,
+    },
+  };
 };
- 

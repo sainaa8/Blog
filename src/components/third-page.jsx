@@ -1,5 +1,7 @@
 import Image from "next/image";
 import useSWR from "swr";
+import { useState } from "react";
+import { useRouter } from "next/router";
 export const Blogs = (props) => {
   const { type, desc, imgsrc, date } = props;
   return (
@@ -24,8 +26,23 @@ export const AllBlog = () => {
   const { data, error } = useSWR("https://dev.to/api/articles", (args) =>
     fetch(args).then((res) => res.json())
   );
+  const router = useRouter()
   console.log(data);
   const titles = ["Design", "Travel", "fashion", "technology", "Branding"];
+  const [moreButtonClicked, setMoreButtonClicked] = useState(false);
+  const [num, setNum] = useState(14);
+
+  const handleMoreButton = () => {
+    if (moreButtonClicked) {
+      setNum(num - 3);
+      setMoreButtonClicked(false);
+    } else {
+      setNum(num + 3);
+      setMoreButtonClicked(true);
+    }
+  };
+
+  console.log(num);
   return (
     <div>
       <div className="ml-[20px] flex flex-col gap-[24px]">
@@ -49,8 +66,8 @@ export const AllBlog = () => {
         </div>
       </div>
       <div className="flex w-fit md:w-[1280px] gap-[10px]  flex-wrap">
-        {data?.slice(5, 14).map((el, index) => (
-          <div className="ml-[30px]" key={index}>
+        {data?.slice(5, num).map((el, index) => (
+          <div onClick={()=>router.push(`/blog/${el.id}`)} className="ml-[30px]" key={index}>
             <Blogs
               imgsrc={el.social_image}
               type={el.tag_list[0]}
@@ -60,7 +77,12 @@ export const AllBlog = () => {
           </div>
         ))}
       </div>
-      <div className="mt-[100px] flex justify-center mb-[20px]">Load More</div>
+      <div
+        onClick={handleMoreButton}
+        className="mt-[100px] flex justify-center mb-[20px] active:scale-110"
+      >
+        Load {moreButtonClicked ? "less" : "more"}
+      </div>
     </div>
   );
 };

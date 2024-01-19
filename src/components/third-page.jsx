@@ -28,7 +28,14 @@ export const AllBlog = () => {
   );
   const router = useRouter();
   console.log(data);
-  const titles = ["Design", "Travel", "fashion", "technology", "Branding"];
+  const titles = [
+    "All",
+    "Design",
+    "Travel",
+    "fashion",
+    "technology",
+    "Branding",
+  ];
   const [moreButtonClicked, setMoreButtonClicked] = useState(false);
   const [num, setNum] = useState(14);
 
@@ -47,10 +54,8 @@ export const AllBlog = () => {
     push("/blog");
   };
   console.log(num);
-  const [color, setColor] = useState(true);
-  const changedColor = () => {
-    setColor(!color);
-  };
+  const [color, setColor] = useState("");
+
   return (
     <div>
       <div className="ml-[20px] flex flex-col gap-[24px]">
@@ -60,13 +65,12 @@ export const AllBlog = () => {
         <div className=" workSans ">
           <div className="flex justify-between">
             <div className="flex gap-[16px]  font-bold">
-              <div className="hover:text-orange-300">All</div>
               <div className="hidden md:flex gap-[16px] ">
                 {titles.map((el, id) => (
                   <div key={id}>
                     <div
-                      onClick={() => changedColor()}
-                      className={`${color ? "text-black" : "text-orange-300"}`}
+                      onClick={() => setColor(el)}
+                      className={`${color === el ? "text-amber-600" : ""}`}
                     >
                       {el}
                     </div>

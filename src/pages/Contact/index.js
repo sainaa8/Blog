@@ -2,7 +2,7 @@ import React from "react";
 
 function index() {
   return (
-    <div className="flex flex-col gap-[20px]">
+    <div className="flex flex-col gap-[20px] mt-[40px]">
       <div className="w-fit md:w-[624px] flex flex-col  gap-[20px] ">
         <div className="workSans">
           <div className="text-[36px] ml-[50px] font-bold">Contact Us</div>
@@ -37,7 +37,7 @@ function index() {
         </div>
         <div className="ml-[30px]">
           <div className="flex flex-col md:flex-row gap-[20px] md:items-center w-[430px] md:w-[478px] justify-between">
-            <div className="w-[225px]  h-[38px] flex items-center rounded-md bg-white">
+            <div className="w-[225px]  h-[38px] flex items-center rounded-md bg-white dark:bg-slate-900">
               <input
                 type="text"
                 placeholder="Your Name"

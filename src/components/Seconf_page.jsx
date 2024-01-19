@@ -39,7 +39,7 @@ export const SecondPage = () => {
   return (
     <div className="flex ml-[20px] flex-col gap-[16px]">
       <div className=" text-[24px] font-bold">Trending</div>
-      <div className="flex overflow-x-auto w-[430px] md:w-fit  gap-[20px]">
+      <div className="flex overflow-x-auto w-[430px] md:w-fit  gap-[20px] border border-white rounded-md p-[10px]">
         {data?.slice(0, 4).map((el, id) => (
           <div onClick={() => router.push(`/blog/${el.id}`)} key={id}>
             <TRend

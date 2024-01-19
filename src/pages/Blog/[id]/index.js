@@ -5,7 +5,7 @@ function id(data) {
   console.log(data.data);
   return (
     <div>
-      <div className="flex flex-col gap-[20px]">
+      <div className="flex flex-col gap-[20px] mt-[20px]">
         <div className="w-fit md:w-[800px]  text-[28px] md:text-[36px]  px-[40px] md:px-[20px] font-semibold">
           {data.data.title}
         </div>
@@ -34,7 +34,7 @@ function id(data) {
           </div>
 
           <div className="w-[430px] md:w-[800px]">
-            <div className="align-center">{data.data.body_html}</div>
+            <div className="align-center">{data.data.body_markdown}</div>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 function index() {
   return (
-    <div className="flex flex-col gap-[20px] mt-[40px]">
+    <div className="flex flex-col gap-[20px] mt-[100px]">
       <div className="w-fit md:w-[624px] flex flex-col  gap-[20px] ">
         <div className="workSans">
           <div className="text-[36px] ml-[50px] font-bold">Contact Us</div>

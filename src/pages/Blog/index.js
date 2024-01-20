@@ -10,7 +10,7 @@ function Blog() {
   const route = useRouter();
   return (
     <div>
-      <div className="text-[24px] ml-[60px] font-bold">
+      <div className="text-[24px] ml-[60px] font-bold mt-[100px]">
         <div className="workSans">All blog posts</div>
       </div>
       <div className="flex flex-wrap w-fit md:w-[1280px] ml-[20px] gap-[16px]">

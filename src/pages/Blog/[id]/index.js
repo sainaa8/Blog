@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 // import { useRouter } from "next/router";
 function id(data) {
-  console.log(data.data);
   return (
     <div>
       <div className="flex flex-col gap-[20px] mt-[20px]">
@@ -25,7 +24,7 @@ function id(data) {
           <div>
             <div className="relative w-[430px] md:w-[800px] h-[250px] md:h-[463px] mt-[32px] ">
               <Image
-                src={data.data.social_image}
+                src={data.data.cover_image}
                 layout="fill"
                 alt=""
                 className="rounded-lg"

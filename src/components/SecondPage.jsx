@@ -6,6 +6,7 @@ import useSWR from "swr";
 
 const TRend = (props) => {
   const { imgrsc, texts = "", tagList } = props;
+  
   return (
     <div>
       <div className="relative w-[290px] h-[320px]">
@@ -31,10 +32,13 @@ const TRend = (props) => {
   );
 };
 
-export const SecondPage = () => {
-  const { data, error } = useSWR("https://dev.to/api/articles", (args) =>
-    fetch(args).then((res) => res.json())
-  );
+export const SecondPage = (props) => {
+  const { data } = props;
+
+  // const { data, error } = useSWR("https://dev.to/api/articles", (args) =>
+  //   fetch(args).then((res) => res.json())
+  // );
+
   const router = useRouter();
   return (
     <div className="flex ml-[20px] flex-col gap-[16px]">

@@ -4,8 +4,13 @@
 
 .workSans {
   font-family: var(--font-work-sans);
-  
 }
 .serif4 {
   font-family: var(--font-serif);
+}
+
+@layer components {
+  .ssss {
+    @apply flex justify-center;
+  }
 }

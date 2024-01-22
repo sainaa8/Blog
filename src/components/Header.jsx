@@ -35,8 +35,8 @@ export const Header = ({ children }) => {
 
   const routes = ["home", "blog", "contact"];
   return (
-    <div className="flex flex-col  items-center mx-auto  ">
-      <div className="sticky top-0 z-30 shadow-sm border mr-[0px] md:mr-[68px]  bg-white dark:bg-black rounded-bl-lg rounded-br-lg px-[20px]">
+    <div className="flex flex-col items-center mx-auto">
+      <div className="sticky top-0 z-30 shadow-sm border mr-[0px] md:mr-[68px] bg-white dark:bg-black rounded-bl-lg rounded-br-lg px-[20px]">
         <div className="flex py-[38px] ">
           <Image
             src={"/logo1.png"}
@@ -44,14 +44,13 @@ export const Header = ({ children }) => {
             height={38}
             className="mr-[140px] md:mr-[118px]"
           />
-          <div className="  items-center   hidden md:flex ">
+          <div className="items-center hidden md:flex">
             <div className="workSans">
               <div className="flex font-light justify-center w-[780px] gap-[40px] text-[16px] text-black dark:text-black">
                 <h1
                   onClick={() => handlePush()}
                   className="active:scale-90 active:text-orange-600"
                 >
-                  {" "}
                   Home
                 </h1>
                 <h1
@@ -101,7 +100,7 @@ export const Header = ({ children }) => {
         <AnimatePresence>
           {open && (
             <motion.div
-              className="  md:hidden bg-gray-300 py-[10px] px-[10px] rounded-lg"
+              className="md:hidden bg-gray-300 py-[10px] px-[10px] rounded-lg"
               initial={{ scale: 0 }}
               animate={{ scale: 1, transition: { duration: 1 } }}
               exit={{ scale: 0, transition: { duration: 1 } }}
@@ -131,7 +130,7 @@ export const Header = ({ children }) => {
                 <input
                   placeholder="search"
                   type="text"
-                  className="w-[140px] h-[20px] bg-gray-200 outline-none ml-[10px]   dark:text-black"
+                  className="w-[140px] h-[20px] bg-gray-200 outline-none ml-[10px] dark:text-black"
                 />
                 <div className="text-[20px]">
                   <IoSearchOutline />
@@ -218,12 +217,12 @@ export const Header = ({ children }) => {
               </div>
             </div>
           </div>
-          <div className="hidden md:flex  h-fit w-[924px] justify-end">
+          <div className="hidden md:flex h-fit w-[924px] justify-end">
             <h1 className="px-[8px] flex justify-center border-r border-gray-400">
               Terms of Use
             </h1>
             <h1 className="px-[8px] flex justify-center border-r border-gray-400">
-              Privacy Policye
+              Privacy Policy
             </h1>
             <h1 className="px-[8px] flex justify-center">Cookie Policy</h1>
           </div>

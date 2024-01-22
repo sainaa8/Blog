@@ -1,7 +1,7 @@
 import React from "react";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import { Blogs } from "@/components/third-page";
+import { Blogs } from "@/components/ThirdPage";
 function Blog() {
   const { data: blogdata, error } = useSWR(
     "https://dev.to/api/articles",

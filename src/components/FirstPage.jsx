@@ -4,11 +4,10 @@ import "flowbite";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 
-export const FirstPage = () => {
-  const { data, error } = useSWR("https://dev.to/api/articles", (args) =>
-    fetch(args).then((res) => res.json())
-  );
+export const FirstPage = (props) => {
+  const { data } = props;
 
+  const router = useRouter();
   const [counter, setCounter] = useState(0);
   const next = () => {
     setCounter(counter + 1);
@@ -18,8 +17,6 @@ export const FirstPage = () => {
   };
 
   console.log(data);
-
-  const router = useRouter();
 
   return (
     <div className="hidden md:flex flex-col ">
@@ -68,7 +65,7 @@ export const FirstPage = () => {
                 onClick={() => {
                   prev();
                 }}
-                className="relative w-[40px] h-[40px] border border-black dark:border-white bg-white rounded active:scale-75 "
+                className="relative w-333 h-333 border border-black dark:border-white bg-white rounded active:scale-75 "
               >
                 <Image src="/<.svg" layout="fill" />
               </button>
@@ -77,7 +74,7 @@ export const FirstPage = () => {
                 onClick={() => {
                   next();
                 }}
-                className="relative w-[40px] h-[40px] border border-black dark:border-white bg-white rounded active:scale-75"
+                className="relative w-333 h-333 border border-black dark:border-white bg-white rounded active:scale-75"
               >
                 <Image src="/>.svg" layout="fill" />
               </button>

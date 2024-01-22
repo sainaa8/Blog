@@ -22,10 +22,14 @@ export const Blogs = (props) => {
   );
 };
 
-export const AllBlog = () => {
-  const { data, error } = useSWR("https://dev.to/api/articles", (args) =>
-    fetch(args).then((res) => res.json())
-  );
+export const AllBlog = (props) => {
+  const { data } = props;
+  const [moreButtonClicked, setMoreButtonClicked] = useState(false);
+  const [num, setNum] = useState(14);
+
+  // const { data, error } = useSWR("https://dev.to/api/articles", (args) =>
+  //   fetch(args).then((res) => res.json())
+  // );
   const router = useRouter();
   console.log(data);
   const titles = [
@@ -36,8 +40,6 @@ export const AllBlog = () => {
     "technology",
     "Branding",
   ];
-  const [moreButtonClicked, setMoreButtonClicked] = useState(false);
-  const [num, setNum] = useState(14);
 
   const handleMoreButton = () => {
     if (moreButtonClicked) {
